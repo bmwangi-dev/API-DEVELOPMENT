@@ -13,6 +13,7 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
     access_token = Column(String, nullable=True)
+    profile_image_key = Column(String, nullable=True)
 
     habits = relationship("Habit", back_populates="owner", cascade="all, delete-orphan")
 

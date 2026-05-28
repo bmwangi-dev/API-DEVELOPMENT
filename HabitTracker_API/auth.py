@@ -17,9 +17,15 @@ import schemas
 from database import get_db
 
 # Configuration
-SECRET_KEY = os.getenv("SECRET_KEY", "crtujnbfresdfg75456789uhgfdcyy654edfrtuv")
+SECRET_KEY = os.getenv("SECRET_KEY", "")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+# RustFS (S3-compatible) Configuration
+RUSTFS_ENDPOINT = os.getenv("RUSTFS_ENDPOINT", "http://localhost:9000")
+RUSTFS_ACCESS_KEY = os.getenv("RUSTFS_ACCESS_KEY", "")
+RUSTFS_SECRET_KEY = os.getenv("RUSTFS_SECRET_KEY", "")
+RUSTFS_BUCKET = os.getenv("RUSTFS_BUCKET", "habitapp")
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 

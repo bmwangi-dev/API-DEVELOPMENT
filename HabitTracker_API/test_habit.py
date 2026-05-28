@@ -3,8 +3,8 @@ import requests
 BASE_URL = "http://127.0.0.1:8000"
 
 # Register & Login
-requests.post(f"{BASE_URL}/users/register", json={"name": "test2", "email": "test2@test.com", "password": "password"})
-res = requests.post(f"{BASE_URL}/users/login", json={"email": "test2@test.com", "password": "password"})
+requests.post(f"{BASE_URL}/users/register", json={"name": "test2", "email": "test2@test.com", "password": "StrongP1"})
+res = requests.post(f"{BASE_URL}/users/login", json={"email": "test2@test.com", "password": "StrongP1"})
 token = res.json().get("access_token")
 
 headers = {"Authorization": f"Bearer {token}"}

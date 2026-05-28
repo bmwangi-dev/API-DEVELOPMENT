@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 import models
 import schemas
 import auth
+import storage
 from database import get_db
 
 router = APIRouter(
@@ -75,6 +76,8 @@ def update_user_me(user_update: schemas.UserUpdate, current_user: models.User = 
 
 @router.delete("/me", status_code=status.HTTP_204_NO_CONTENT)
 def delete_user_me(current_user: models.User = Depends(auth.get_current_user), db: Session = Depends(get_db)):
+    if current_user.profile_image_key:
+        storage.delete_profile_image(current_user.profile_image_key)
     db.delete(current_user)
     db.commit()
     return None
